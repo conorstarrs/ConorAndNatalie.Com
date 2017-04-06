@@ -41,8 +41,8 @@ angular.module("app", [])
 
     $scope.submitRSVP = function () {
     	for(var i = 0; i < $scope.people.length; i++) {
-    		if($scope.people[i].bus === undefined) {
-    			$scope.people[i].bus = '';
+    		if($scope.people[i].bus === undefined || $scope.people[i].attending === 'no') {
+    			$scope.people[i].bus = 'no';
     		}
 	    	var thePerson = 
 	                     {
@@ -67,7 +67,6 @@ angular.module("app", [])
     };
 
 	$scope.getRSVPs = function () {
-		$scope.rsvps.push("eh");
     	$http({
 	        method : "GET",
 	        url : "http://conorandnatalie-api.ddzpqh76bb.eu-west-1.elasticbeanstalk.com/people"

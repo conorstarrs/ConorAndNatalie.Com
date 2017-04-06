@@ -185,7 +185,7 @@
 
                         <div ng-repeat="person in people">
                             </br>
-                            <legend>Guest number {{$index + 1}}</legend>
+                            <legend>{{person.firstName ?  person.firstName + " (Guest " + ($index + 1) + ")" : "Guest " + ($index + 1)}}</legend>
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="firstName">First Name: </label>
@@ -194,14 +194,14 @@
                                     <input type="text" placeholder="Last Name" class="form-control" ng-model="person.lastName" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="person.attending">Will you be attending? </label></br>
+                                    <label for="person.attending">Will {{person.firstName ? person.firstName : "you"}} be attending? </label></br>
                                     <input type="radio" ng-model="person.attending" value="yes" ng-required="!person.attending"> Yes
                                     </br>
                                     <input type="radio" ng-model="person.attending" value="no" ng-required="!person.attending"> Unfortunately Not
                                     </br>
                                 </div>
                                 <div ng-if="person.attending === 'yes'" class="form-group">
-                                    <label for="person.bus">Will you avail of the bus from the church to the reception? </label></br>
+                                    <label for="person.bus">Will {{person.firstName ? person.firstName : "you"}} avail of the bus from the church to the reception?</label></br>
                                     <input type="radio" ng-model="person.bus" value="yes" ng-required="!person.bus"> Yes
                                     </br>
                                     <input type="radio" ng-model="person.bus" value="no" ng-required="!person.bus"> No - driving
